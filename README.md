@@ -148,12 +148,12 @@ GOOGLE_API_KEY="your-gemini-api-key"
 # Tavily Search API Key (Get at: https://tavily.com/)
 TAVILY_API_KEY="your-tavily-api-key"
 
-# Database Connection (Neon PostgreSQL or SQLite)
+# Database Connection (Neon PostgreSQL)
 DATABASE_URL="postgresql://user:password@host/neondb?sslmode=require"
 
 # NextAuth Configuration
 NEXTAUTH_SECRET="your-super-secret-key-change-in-prod"
-NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_URL="https://tripos-ai.vercel.app"
 ```
 
 ### 4. Initialize Database
@@ -161,26 +161,31 @@ NEXTAUTH_URL="http://localhost:3000"
 npx prisma db push
 ```
 
-### 5. Run Development Server
+### 5. Start Application
 ```bash
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser to experience Tripos!
+Visit the live production application at **[https://tripos-ai.vercel.app](https://tripos-ai.vercel.app)**!
 
 ---
 
 ## 🌐 Production Deployment (Vercel)
 
+The live production deployment is hosted on Vercel:
+
+🔗 **Production URL:** [https://tripos-ai.vercel.app](https://tripos-ai.vercel.app)
+
+To deploy your own instance:
 1. Push your repository to **GitHub**.
 2. Import the repository into **[Vercel](https://vercel.com)**.
-3. In **Vercel Settings ➔ Environment Variables**, add:
+3. In **Vercel Settings ➔ Environment Variables**, configure:
    - `GOOGLE_API_KEY`
    - `TAVILY_API_KEY`
    - `DATABASE_URL`
    - `NEXTAUTH_SECRET`
-   - `NEXTAUTH_URL` (e.g. `https://tripos-ai.vercel.app`)
-4. Click **Deploy**.
+   - `NEXTAUTH_URL` = `https://tripos-ai.vercel.app`
+4. Deploy!
 
 ---
 
