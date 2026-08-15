@@ -551,9 +551,9 @@ export const ThinkingAgentUI: React.FC<ThinkingAgentUIProps> = ({ formData, onRe
                 </h3>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", marginTop: "1rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-secondary)", fontSize: "0.95rem" }}>
-                    <DollarSign size={16} color="var(--primary-gold)" />
+                    <Sparkles size={16} color="var(--primary-gold)" />
                     <span>
-                      Est. Total: <strong style={{ color: "var(--primary-gold)" }}>{draft.currency} {draft.totalEstimatedCost}</strong>
+                      Est. Total: <strong style={{ color: "var(--primary-gold)" }}>{(draft.currency === "INR" ? "₹ " : draft.currency === "EUR" ? "€ " : draft.currency === "GBP" ? "£ " : draft.currency === "JPY" ? "¥ " : draft.currency === "USD" ? "$ " : `${draft.currency} `)}{draft.totalEstimatedCost.toLocaleString()}</strong>
                     </span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--text-secondary)", fontSize: "0.95rem" }}>

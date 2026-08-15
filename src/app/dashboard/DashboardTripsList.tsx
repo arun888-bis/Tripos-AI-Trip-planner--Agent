@@ -168,9 +168,9 @@ export const DashboardTripsList: React.FC<DashboardTripsListProps> = ({ initialT
                   )}
 
                   <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", fontSize: "1.05rem", color: "var(--primary-gold)", fontWeight: 800 }}>
-                    <DollarSign size={17} />
                     <span>
-                      {trip.currency} {(trip.totalEstimatedCost || trip.budget).toLocaleString()}
+                      {(trip.currency === "INR" ? "₹ " : trip.currency === "EUR" ? "€ " : trip.currency === "GBP" ? "£ " : trip.currency === "JPY" ? "¥ " : trip.currency === "USD" ? "$ " : `${trip.currency} `)}
+                      {(trip.totalEstimatedCost || trip.budget).toLocaleString()}
                     </span>
                   </div>
 

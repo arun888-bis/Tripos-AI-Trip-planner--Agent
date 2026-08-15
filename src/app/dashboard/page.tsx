@@ -38,6 +38,17 @@ export default async function DashboardPage() {
   const finalizedTrips = trips.filter((t) => t.status === "FINALIZED").length;
   const totalBudget = trips.reduce((acc, t) => acc + (t.totalEstimatedCost || t.budget || 0), 0);
   const uniqueDestinations = new Set(trips.map((t) => t.destination)).size;
+  const primaryCurrency = trips[0]?.currency || "USD";
+  const currencySymbolMap: Record<string, string> = {
+    INR: "₹",
+    USD: "$",
+    EUR: "€",
+    GBP: "£",
+    JPY: "¥",
+    AUD: "A$",
+    CAD: "C$",
+  };
+  const primarySymbol = currencySymbolMap[primaryCurrency] || primaryCurrency;
 
   return (
     <div style={{ minHeight: "100vh", padding: "2.5rem 2rem" }}>
@@ -55,7 +66,7 @@ export default async function DashboardPage() {
       >
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <span style={{ fontFamily: "var(--font-serif)", fontWeight: 800, fontSize: "1.6rem", letterSpacing: "0.05em", color: "var(--text-primary)" }}>
-            TRIPOS<span style={{ color: "var(--primary-gold)" }}>.AI</span>
+            Tripos<span style={{ color: "var(--primary-gold)" }}>.</span>
           </span>
         </Link>
 
@@ -162,7 +173,7 @@ export default async function DashboardPage() {
               </div>
             </div>
             <div style={{ fontSize: "2.4rem", fontWeight: 700, color: "var(--primary-gold)", fontFamily: "var(--font-serif)" }}>
-              ${totalBudget.toLocaleString()}
+              {primarySymbol} {totalBudget.toLocaleString()}
             </div>
             <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginTop: "0.4rem" }}>
               Estimated flight, stay & activity costs
